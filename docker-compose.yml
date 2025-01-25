@@ -1,0 +1,46 @@
+services:
+  backend:
+    build:
+      context: ./oj-backend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    networks:
+      - oj-network
+
+  frontend:
+    build:
+      context: ./oj-frontend
+    ports:
+      - "8080:8080"
+    networks:
+      - oj-network
+
+  judge:
+    image: criyle/go-judge:latest
+    ports:
+      - "5050:5050"
+    command: >
+      /bin/sh -c "apt-get update && apt-get install -y g++ && /usr/local/bin/go-judge"
+    networks:
+      - oj-network
+    privileged: true
+
+  db:
+    image: postgres:13-alpine  # 使用官方 PostgreSQL 镜像
+    environment:
+      POSTGRES_USER: postgres  # 设置数据库用户名
+      POSTGRES_PASSWORD: 246266262  # 设置数据库密码
+      POSTGRES_DB: oj  # 设置数据库名称
+    volumes:
+      - pg_data:/var/lib/postgresql/data  # 持久化数据库数据
+    networks:
+      - oj-network
+    
+networks:
+  oj-network:
+    driver: bridge
+
+volumes:
+  pg_data:
