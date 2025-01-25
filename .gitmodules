@@ -1,0 +1,6 @@
+[submodule "oj-backend"]
+	path = oj-backend
+	url = git@github.com:Wood-Q/oj-backend.git
+[submodule "oj-frontend"]
+	path = oj-frontend
+	url = git@github.com:Wood-Q/oj-frontend.git
