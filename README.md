@@ -16,5 +16,5 @@ arco design组件库+vue框架+vue router路由管理+Manaco Editor开源代码�
 ### docker compose直接使用
 拉取代码到本地后直接
 ```
-docker-compose up build
+docker-compose up --build
 ```
