@@ -14,7 +14,12 @@ arco design组件库+vue框架+vue router路由管理+Manaco Editor开源代码�
 
 ## 使用
 ### docker compose直接使用
-拉取代码到本地后直接
+拉取代码到本地后先更新子模块
+```
+cd Wood-OJ
+git submodule update --init --recursive
+```
+然后docker-compose启动
 ```
 docker-compose up --build
 ```
