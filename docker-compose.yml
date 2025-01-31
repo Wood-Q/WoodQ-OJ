@@ -6,6 +6,7 @@ services:
       - "3000:3000"
     depends_on:
       - db
+      - redis
     networks:
       - oj-network
 
@@ -35,6 +36,13 @@ services:
       POSTGRES_DB: oj  # 设置数据库名称
     volumes:
       - pg_data:/var/lib/postgresql/data  # 持久化数据库数据
+    networks:
+      - oj-network
+
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
     networks:
       - oj-network
     
